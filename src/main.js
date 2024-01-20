@@ -13,7 +13,7 @@ async function onSearch(e) {
   }
   try {
     const response = await getData(q);
-    console.log(response.data.articles);
+    console.log(response);
     refs.wrapper.innerHTML = createMarkup(response.data.articles);
   } catch (error) {}
 }

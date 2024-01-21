@@ -9,7 +9,7 @@ async function onSearch(e) {
   e.preventDefault();
   const q = e.currentTarget.elements.delay.value.trim();
   if (!q) {
-    return alert('&&&&&');
+    return alert('Write request');
   }
   try {
     const response = await getData(q);

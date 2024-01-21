@@ -11,5 +11,5 @@ import{a}from"./assets/vendor-a2e8d7fa.js";(function(){const e=document.createEl
           </div>
         </a>
       </li>
-        `).join("")}const l=u();l.form.addEventListener("submit",d);async function d(o){o.preventDefault();const e=o.currentTarget.elements.delay.value.trim();if(!e)return alert("&&&&&");try{const s=await c(e);console.log(s),l.wrapper.innerHTML=f(s.data.articles)}catch{}}
+        `).join("")}const l=u();l.form.addEventListener("submit",d);async function d(o){o.preventDefault();const e=o.currentTarget.elements.delay.value.trim();if(!e)return alert("Write request");try{const s=await c(e);console.log(s),l.wrapper.innerHTML=f(s.data.articles)}catch{}}
 //# sourceMappingURL=commonHelpers.js.map

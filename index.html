@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/news_project/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/news_project/assets/vendor-310fe2df.js">
     <link rel="stylesheet" href="/news_project/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/news_project/assets/index-d388a838.css">
+    <link rel="stylesheet" href="/news_project/assets/index-3f03c3f6.css">
   </head>
   <body>
     <h1 class="title">Read fresh news!</h1>
@@ -27,13 +27,16 @@
       />
       <button class="submit-btn" type="submit">Search</button>
     </form>
-    <div class="modal-window js-modal">
-      <p class="modal-text">Do yo want to read last top news?</p>
-      <button class="last-news-btn js-news-btn" type="button">Yes!</button>
-      <button class="last-news-btn no-btn js-close-btn" type="button">
-        No
-      </button>
+    <div class="js-modal backdrop">
+      <div class="modal-window">
+        <p class="modal-text">Do yo want to read last top news?</p>
+        <button class="last-news-btn js-news-btn" type="button">Yes!</button>
+        <button class="last-news-btn no-btn js-close-btn" type="button">
+          No
+        </button>
+      </div>
     </div>
+
     <ul class="wrapper js-wrapper"></ul>
     <div class="js-loader backdrop is-hidden"></div>
     

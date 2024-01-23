@@ -38,8 +38,7 @@ async function onSearch(e) {
     const response = await getData(q);
     refs.wrapper.innerHTML = createMarkup(response.data.articles);
     infoAlert(response.data.totalResults);
-    const item = refs.wrapper.lastElementChild;
-    observer.observe(item);
+    observer.observe(refs.wrapper.lastElementChild);
   } catch (error) {
     errorAlert();
   } finally {
@@ -47,7 +46,7 @@ async function onSearch(e) {
   }
   e.target.reset();
 }
-export async function loadMoreData() {
+async function loadMoreData() {
   page += 1;
   spinnerPlay();
   try {

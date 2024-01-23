@@ -5,6 +5,7 @@ import { spinnerPlay, spinnerStop } from './js/spinners';
 import { warningAlert, errorAlert, infoAlert, infoPage } from './js/izitoasts';
 import { toHiddenBtn } from './js/hiddenBtn';
 import { getTopData } from './js/API-request-top-news';
+import { pushModal, closeModal } from './js/modal';
 
 const refs = getRefs();
 let q = null;
@@ -27,6 +28,8 @@ const observer = new IntersectionObserver(callback, options);
 
 refs.form.addEventListener('submit', onSearch);
 refs.newsBtn.addEventListener('click', onSearchTopNews);
+window.addEventListener('load', pushModal);
+refs.closeBtn.addEventListener('click', closeModal);
 
 async function onSearch(e) {
   e.preventDefault();
@@ -75,6 +78,7 @@ async function loadMoreData() {
 async function onSearchTopNews() {
   toHiddenBtn();
   spinnerPlay();
+  closeModal();
   try {
     const response = await getTopData();
     refs.wrapper.innerHTML = createMarkup(response.data.articles);

@@ -65,6 +65,7 @@ body {
 }
 .list-item {
   max-width: calc((1200px - 48px) / 3);
+  height: 444px;
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: #fff;
   border-radius: 8px;

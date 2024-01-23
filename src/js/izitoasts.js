@@ -13,12 +13,14 @@ export function errorAlert() {
   iziToast.error({
     title: 'Error',
     message: 'Server error',
+    position: 'center',
   });
 }
 
 export function infoAlert(number) {
   iziToast.info({
     title: 'Hello',
-    message: `We found ${number} results`,
+    message: `We have found ${number} results`,
+    position: 'topRight',
   });
 }

@@ -7,7 +7,7 @@ export function getData(q, page) {
       q,
       searchIn: 'content',
       sortBy: 'relevancy',
-      pageSize: 12,
+      pageSize: 15,
       page,
     },
   });

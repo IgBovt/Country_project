@@ -9,6 +9,7 @@ export function getData(q, page) {
       sortBy: 'relevancy',
       pageSize: 15,
       page,
+      Authorization: '31d73c075bf1480facfc72f704139b7b',
     },
   });
 }

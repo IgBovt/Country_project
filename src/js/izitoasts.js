@@ -24,3 +24,11 @@ export function infoAlert(number) {
     position: 'topRight',
   });
 }
+
+export function infoPage() {
+  iziToast.info({
+    title: 'Sorry',
+    message: 'It`s all results',
+    position: 'topRight',
+  });
+}

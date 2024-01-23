@@ -2,7 +2,9 @@ import { getData } from './js/API-request';
 import { getRefs } from './js/refs';
 import { createMarkup } from './js/createMarkup';
 import { spinnerPlay, spinnerStop } from './js/spinners';
-import { warningAlert, errorAlert, infoAlert } from './js/izitoasts';
+import { warningAlert, errorAlert, infoAlert, infoPage } from './js/izitoasts';
+import { toHiddenBtn } from './js/hiddenBtn';
+import { getTopData } from './js/API-request-top-news';
 
 const refs = getRefs();
 let q = null;
@@ -24,9 +26,11 @@ const callback = function (entries, observer) {
 const observer = new IntersectionObserver(callback, options);
 
 refs.form.addEventListener('submit', onSearch);
+refs.newsBtn.addEventListener('click', onSearchTopNews);
 
 async function onSearch(e) {
   e.preventDefault();
+  toHiddenBtn();
   q = e.currentTarget.elements.delay.value.trim();
   spinnerPlay();
   if (!q) {
@@ -38,7 +42,9 @@ async function onSearch(e) {
     const response = await getData(q);
     refs.wrapper.innerHTML = createMarkup(response.data.articles);
     infoAlert(response.data.totalResults);
-    observer.observe(refs.wrapper.lastElementChild);
+    if (page < response.data.totalResults / 15) {
+      observer.observe(refs.wrapper.lastElementChild);
+    }
   } catch (error) {
     errorAlert();
   } finally {
@@ -55,9 +61,29 @@ async function loadMoreData() {
       'beforeend',
       createMarkup(response.data.articles)
     );
-    const item = document.querySelector('.list-item:last-child');
-    observer.observe(item);
+    if (page < response.data.totalResults / 15) {
+      observer.observe(refs.wrapper.lastElementChild);
+    } else {
+      infoPage();
+    }
   } catch (error) {
+  } finally {
+    spinnerStop();
+  }
+}
+
+async function onSearchTopNews() {
+  toHiddenBtn();
+  spinnerPlay();
+  try {
+    const response = await getTopData();
+    refs.wrapper.innerHTML = createMarkup(response.data.articles);
+    infoAlert(response.data.totalResults);
+    if (page < response.data.totalResults / 15) {
+      observer.observe(refs.wrapper.lastElementChild);
+    }
+  } catch (error) {
+    errorAlert();
   } finally {
     spinnerStop();
   }
